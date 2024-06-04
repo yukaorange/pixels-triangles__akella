@@ -1,6 +1,7 @@
 # About
 
-I gonna write a explain of project
+I learned deeply about handling canvas2D through tutorials. I'm floating geometric patterns created using SDF within the image bounds.
+
 
 [sdf](https://iquilezles.org/articles/distfunctions/)
 [sdf](https://qiita.com/uctakeoff/items/387f2271befb81734d18)
