@@ -11,6 +11,15 @@
 .home-mv__image {
   position: absolute;
   z-index: 1;
-  width: 87.35vw;
+  width: 59.35vw;
   aspect-ratio: 736/414;
+}
+
+@include mq(sp) {
+  .home-mv__image {
+    position: absolute;
+    z-index: 1;
+    width: 87.35vw;
+    aspect-ratio: 736/414;
+  }
 }

@@ -192,7 +192,13 @@ export default class Buffer {
 
     this.mesh.material.uniforms.uPointSize.value = scale
 
-    const calculatedScale = scale * 1.5
+    let calculatedScale
+
+    if (this.device == 'pc') {
+      calculatedScale = scale * 1
+    } else {
+      calculatedScale = scale * 1.5
+    }
 
     this.mesh.scale.set(calculatedScale, calculatedScale, 1)
   }
