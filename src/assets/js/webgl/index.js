@@ -63,6 +63,7 @@ export default class Canvas {
       antialias: true,
       transparent: true
     })
+
     this.renderer.setClearColor(0x000000, 1)
 
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -170,7 +171,7 @@ export default class Canvas {
 
     const aspect = this.bounds.width / this.bounds.height
 
-    const fov = this.camera.fov * (Math.PI / 180) // default camera.fov = 45deg. result fov is in radians. (1/4 PI rad)
+    const fov = this.camera.fov * (Math.PI / 180) // default camera.fov = 45deg.  result is in radian. (1/4 PI rad)
 
     const height = 2 * Math.tan(fov / 2) * this.camera.position.z //z = 5 is setted at this.createCamera
 
