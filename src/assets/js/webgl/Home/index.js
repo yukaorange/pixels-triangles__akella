@@ -5,8 +5,8 @@ import { PlaneGeometry } from 'three'
 
 import * as THREE from 'three'
 
-import Plane from './object/Plane'
-import Model from './object/Model'
+import Buffer from '@js/webgl/Home/object/Buffer'
+import Canvas2D from '@js/webgl/Home/object/Canvas2D'
 
 export default class Home {
   constructor({ scene, sizes, device, assets }) {
@@ -47,9 +47,9 @@ export default class Home {
       lerp: 0.1
     }
 
-    this.createPlane()
+    this.createCanvas2D()
 
-    this.createModel()
+    this.createMesh()
 
     this.onResize({
       sizes: this.sizes,
@@ -59,24 +59,22 @@ export default class Home {
     this.show()
   }
 
-  createPlane() {
-    this.plane = new Plane({
+  createCanvas2D() {
+    this.canvas2D = new Canvas2D({
       sizes: this.sizes,
       device: this.device,
       assets: this.assets
     })
-
-    this.scene.add(this.plane.mesh)
   }
 
-  createModel() {
-    this.model = new Model({
+  createMesh() {
+    this.buffer = new Buffer({
       sizes: this.sizes,
       device: this.device,
       assets: this.assets
     })
 
-    this.scene.add(this.model.model)
+    this.scene.add(this.buffer.mesh)
   }
 
   /**
@@ -84,19 +82,23 @@ export default class Home {
    */
 
   show() {
-    // this.plane.show()
+    // this.buffer.show()
   }
 
   hide() {
-    // this.plane.hide()
+    // this.buffer.hide()
   }
 
   /**
    * events
    */
   onResize(values) {
-    if (this.plane) {
-      this.plane.onResize(values)
+    if (this.buffer) {
+      this.buffer.onResize(values)
+    }
+
+    if (this.canvas2D) {
+      this.canvas2D.onResize(values)
     }
   }
 
@@ -127,9 +129,7 @@ export default class Home {
    * update
    */
   update({ scroll, time, params, flag }) {
-    if (!this.plane) return
-
-    this.plane.update({
+    this.buffer?.update({
       scroll: scroll,
       time: time,
       params: params,
@@ -141,6 +141,6 @@ export default class Home {
    * destroy
    */
   destroy() {
-    this.scene.remove(this.plane.mesh)
+    this.scene.remove(this.buffer.mesh)
   }
 }

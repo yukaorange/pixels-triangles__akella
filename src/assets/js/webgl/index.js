@@ -8,6 +8,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Composer from './postprocess/Composer.js'
 
 import Home from './Home'
+import { lights } from 'three/examples/jsm/nodes/Nodes.js'
 
 export default class Canvas {
   constructor({ template, dom, device, assets }) {
@@ -59,10 +60,10 @@ export default class Canvas {
   createRenderer() {
     this.renderer = new WebGLRenderer({
       alpha: true,
-      antialias: true
+      antialias: true,
+      transparent: true
     })
-
-    this.renderer.setClearColor(0x000000, 0)
+    this.renderer.setClearColor(0x000000, 1)
 
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
@@ -83,13 +84,13 @@ export default class Canvas {
 
     this.camera = new PerspectiveCamera(fov, aspect, near, far)
 
-    this.camera.position.z = 5
+    this.camera.position.set(0, 0, 5)
   }
 
   createLight() {
-    const light = new THREE.DirectionalLight(0xffffff, 1)
-    light.position.set(0, 2, 2)
-    this.scene.add(light)
+    // const light = new THREE.DirectionalLight(0xffffff, 1)
+    // light.position.set(0, 2, 2)
+    // this.scene.add(light)
   }
 
   createPane() {
@@ -117,7 +118,7 @@ export default class Canvas {
   }
 
   createControls() {
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+    // this.controls = new OrbitControls(this.camera, this.renderer.domElement)
   }
 
   createClock() {
@@ -230,18 +231,6 @@ export default class Canvas {
       y: this.y
     }
 
-    if (this.about) {
-      this.about.onTouchMove(values)
-    }
-
-    if (this.collections) {
-      this.collections.onTouchMove(values)
-    }
-
-    if (this.detail) {
-      this.detail.onTouchMove(values)
-    }
-
     if (this.home) {
       this.home.onTouchMove(values)
     }
@@ -263,18 +252,6 @@ export default class Canvas {
     const values = {
       x: this.x,
       y: this.y
-    }
-
-    if (this.about) {
-      this.about.onTouchUp(values)
-    }
-
-    if (this.collections) {
-      this.collections.onTouchUp(values)
-    }
-
-    if (this.detail) {
-      this.detail.onTouchUp(values)
     }
 
     if (this.home) {

@@ -1,0 +1,25 @@
+@use "./../../mixin/" as *;
+
+.home-mv {
+  position: fixed;
+  inset: 0;
+  place-items: center;
+  display: grid;
+  z-index: -1;
+}
+
+.home-mv__image {
+  position: absolute;
+  z-index: 1;
+  width: 59.35vw;
+  aspect-ratio: 736/414;
+}
+
+@include mq(sp) {
+  .home-mv__image {
+    position: absolute;
+    z-index: 1;
+    width: 87.35vw;
+    aspect-ratio: 736/414;
+  }
+}

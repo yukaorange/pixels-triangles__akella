@@ -21,10 +21,10 @@ export default class Composer {
     this.renderPass = new RenderPass(this.scene, this.camera)
 
     const bloomParam = {
-      exposure: 1.25,
-      bloomStrength: 1,
-      bloomThreshold: 0.75,
-      bloomRadius: 1.25
+      exposure: 0.5,
+      bloomStrength: 0.8,
+      bloomThreshold: 0.8,
+      bloomRadius: 0.8
     }
 
     this.unrealBloomPass = new UnrealBloomPass(
@@ -46,6 +46,6 @@ export default class Composer {
 
   createPass() {
     this.composer.addPass(this.renderPass)
-    // this.composer.addPass(this.unrealBloomPass)
+    this.composer.addPass(this.unrealBloomPass)
   }
 }
