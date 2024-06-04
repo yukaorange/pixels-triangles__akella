@@ -6,8 +6,7 @@ import { TextureLoader } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-const modelPass =
-  '/model/free_tesla_tequila/scene.gltf'
+const modelPass = '/model/free_tesla_tequila/scene.gltf'
 const envPass = '/textures/hologram-map.webp'
 
 const dracoPass = '/draco/'

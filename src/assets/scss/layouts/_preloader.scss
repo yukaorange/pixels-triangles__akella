@@ -1,0 +1,24 @@
+@use "./../mixin/" as *;
+
+.preloader {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  background-color: var(--gray-2);
+  display: grid;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__laoding {
+  font-size: 2rem;
+}
+
+.preloader__text {
+  font-size: 2rem;
+}
+
+.preloader__assets {
+  display: none;
+}
